@@ -1,0 +1,24 @@
+:root {
+    /* - PALETA - */
+    
+    /* Fundos */
+    --fundo-principal: #121212;     
+    --fundo-card: #1E293B;          
+    
+    /* Destaques */
+    --verde-destaque: #10B981;      
+    --verde-hover: #059669;         
+    /* Textos */
+    --texto-principal: #FFFFFF;     
+    --texto-secundario: #94A3B8;    
+    
+    /* Fontes */
+    --font-titulos: 'Montserrat', sans-serif;
+    --font-textos: 'Inter', sans-serif;
+}
+/* Reset básico de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

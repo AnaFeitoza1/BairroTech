@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--título da aba do navegador-->
+      <title>BairroTech | Tecnologia com o cidadão</title>
+      <!--descrição do site para SEO(Google)-->
+      <meta name="description" content="Plataforma digital para registro de ocorrências urbanas e avisos comunitários. Projeto CitizenTech - FIAP.">
+      <!--fontes do Google Fonts-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+      <!--arquivo css principal-->
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+       <!--cabeçalho e menu-->
+       <header class="header">
+           <div class="container header-content">
+              <!-- Logo (usando a imagem que você vai salvar) -->
+               <a href="index.html" class="logo">
+                  <img src="assets/images/logo_BairroTech_vs.png" alt="Logo, semelhante a uma árvore, do BairroTech" width="40">
+                  <span>BairroTech</span>
+               </a>
+
+              <nav>
+                 <ul class="menu">
+                      <li><a href="index.html" class="ativo">Home</a></li>
+                      <li><a href="sobre.html">Sobre</a></li>
+                      <li><a href="ocorrencias.html">Ocorrências</a></li>
+                      <li><a href="avisos.html">Avisos</a></li>
+                      <li><a href="faq.html">Dúvidas</a></li>
+                      <li><a href="integrantes.html">Integrantes</a></li>
+                      <li><a href="contato.html">Contato</a></li>
+                 </ul>
+               </nav>
+
+               <!-- Botão do Menu Mobile (Hambúrguer) -->
+               <button class="menu-btn" id="btn-mobile" aria-label="Abrir Menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </button>
+           </div>
+       </header>
+       <main>
+           <!-- SEÇÃO HERO (A primeira coisa que o usuário vê) -->
+          <section class="hero">
+              <div class="container hero-content">
+                  <h1>Sua voz transforma o seu bairro.</h1>
+                  <p>Registre problemas urbanos, acompanhe as soluções e receba alertas oficiais em um só lugar. O BairroTech conecta você à sua comunidade.</p>
+                   <div class="hero-botoes">
+                      <a href="ocorrencias.html" class="btn">Registrar Ocorrência</a>
+                      <a href="avisos.html" class="btn btn-secundario">Ver Avisos</a>
+                  </div>
+               </div>
+          </section>
+
+          <!-- SEÇÃO: COMO FUNCIONA (Cards explicativos) -->
+          <section class="como-funciona">
+              <div class="container">
+                  <h2>Como o BairroTech ajuda você?</h2>
+                
+                  <div class="cards-grid">
+                      <!-- Card 1 -->
+                      <article class="card">
+                          <!-- Use um ícone ou emoji simples para o primeiro semestre -->
+                          <div class="card-icon"><img src="assets/icons/pin.svg" alt="Icon verde de Pin" class="card-icon-img"></div>
+                          <h3>Registre Problemas</h3>
+                          <p>Encontrou um buraco, lixo acumulado ou poste apagado? Tire uma foto e registre com localização.</p>
+                      </article>
+
+                      <!-- Card 2 -->
+                      <article class="card">
+                          <div class="card-icon"><img src="assets/icons/acompanha.svg" alt="Icon verde de Acompanhamento" class="card-icon-img"></div>
+                          <h3>Acompanhe o Status</h3>
+                          <p>Receba um protocolo e acompanhe o andamento da sua solicitação junto aos órgãos públicos.</p>
+                      </article>
+
+                       <!-- Card 3 -->
+                      <article class="card">
+                          <div class="card-icon"><img src="assets/icons/alerta.svg" alt=" Icon verde de Alerta" class="card-icon-img"></div>
+                          <h3>Alertas Comunitários</h3>
+                          <p>Fique informado sobre chuvas fortes, falta de água e interdições na sua região.</p>
+                      </article>
+                   </div>
+                </div>
+           </section>
+
+          <!-- SEÇÃO: Chamada para ação -->
+           <section class="cta-final">
+               <div class="container">
+                   <h2>Faça parte da mudança no seu bairro.</h2>
+                   <p>Junte-se a outros moradores e ajude a construir uma comunidade mais segura e sustentável.</p>
+                   <a href="sobre.html" class="btn">Conheça o Projeto</a>
+               </div>
+           </section>
+       </main>
+       <footer class="footer">
+          <div class="container footer-content">
+              <div class="footer-info">
+                  <p>&copy; 2026 BairroTech - Global Solution FIAP.</p>
+                  <p>Tecnologia com o cidadão no centro da inovação.</p>
+              </div>
+          </div>
+       </footer>
+   </body>
+</html>
