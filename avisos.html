@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avisos | BairroTech</title>
+    <meta
+      name="description"
+      content="Consulte avisos de falta de água, chuvas fortes, risco de enchentes e interdições de vias por bairro. Projeto CitizenTech - Global Solution FIAP."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <a href="index.html" class="logo">
+          <img
+            src="assets/images/logo_BairroTech_vs.png"
+            alt="Logo do BairroTech"
+            width="40"
+          />
+          <span>BairroTech</span>
+        </a>
+
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="ocorrencias.html">Ocorrências</a></li>
+            <li><a href="avisos.html" class="ativo">Avisos</a></li>
+            <li><a href="faq.html">Dúvidas</a></li>
+            <li><a href="integrantes.html">Integrantes</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão do Menu Mobile (Hambúrguer) -->
+        <button class="menu-btn" id="btn-mobile" aria-label="Abrir Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Introdução -->
+      <section class="hero sobre-hero">
+        <div class="container hero-content">
+          <h1>Avisos comunitários</h1>
+          <p>
+            Fique por dentro de falta de água, chuvas fortes, risco de
+            enchentes e interdições de vias no seu bairro.
+          </p>
+        </div>
+      </section>
+
+      <!-- Filtros e lista de avisos -->
+      <section class="sobre-secao">
+        <div class="container">
+          <h2>Avisos do seu bairro</h2>
+          <p>
+            Os avisos vêm de fontes oficiais, como Sabesp, INMET, SAISP, Defesa
+            Civil e órgãos municipais, conforme a disponibilidade de integração
+            dos dados. Os avisos abaixo são exemplos ilustrativos do projeto.
+          </p>
+
+          <div class="filtros">
+            <div class="campo">
+              <label for="filtro-tipo">Tipo de aviso</label>
+              <select id="filtro-tipo">
+                <option value="todos">Todos</option>
+                <option value="agua">Falta de água</option>
+                <option value="chuva">Chuva forte</option>
+                <option value="enchente">Risco de enchente</option>
+                <option value="interdicao">Interdição de via</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="filtro-bairro">Buscar bairro</label>
+              <input
+                type="search"
+                id="filtro-bairro"
+                list="lista-bairros"
+                placeholder="Digite o nome do bairro"
+                autocomplete="off"
+              />
+              <datalist id="lista-bairros">
+                <option value="Água Rasa"></option>
+                <option value="Alto de Pinheiros"></option>
+                <option value="Anhanguera"></option>
+                <option value="Aricanduva"></option>
+                <option value="Artur Alvim"></option>
+                <option value="Barra Funda"></option>
+                <option value="Bela Vista"></option>
+                <option value="Belém"></option>
+                <option value="Bom Retiro"></option>
+                <option value="Brás"></option>
+                <option value="Brasilândia"></option>
+                <option value="Butantã"></option>
+                <option value="Cachoeirinha"></option>
+                <option value="Cambuci"></option>
+                <option value="Campo Belo"></option>
+                <option value="Campo Grande"></option>
+                <option value="Campo Limpo"></option>
+                <option value="Cangaíba"></option>
+                <option value="Capão Redondo"></option>
+                <option value="Carrão"></option>
+                <option value="Casa Verde"></option>
+                <option value="Cidade Ademar"></option>
+                <option value="Cidade Dutra"></option>
+                <option value="Cidade Líder"></option>
+                <option value="Cidade Tiradentes"></option>
+                <option value="Consolação"></option>
+                <option value="Cursino"></option>
+                <option value="Ermelino Matarazzo"></option>
+                <option value="Freguesia do Ó"></option>
+                <option value="Grajaú"></option>
+                <option value="Guaianases"></option>
+                <option value="Iguatemi"></option>
+                <option value="Ipiranga"></option>
+                <option value="Itaim Bibi"></option>
+                <option value="Itaim Paulista"></option>
+                <option value="Itaquera"></option>
+                <option value="Jabaquara"></option>
+                <option value="Jaçanã"></option>
+                <option value="Jaguara"></option>
+                <option value="Jaguaré"></option>
+                <option value="Jaraguá"></option>
+                <option value="Jardim Ângela"></option>
+                <option value="Jardim Helena"></option>
+                <option value="Jardim Paulista"></option>
+                <option value="Jardim São Luís"></option>
+                <option value="José Bonifácio"></option>
+                <option value="Lajeado"></option>
+                <option value="Lapa"></option>
+                <option value="Liberdade"></option>
+                <option value="Limão"></option>
+                <option value="Mandaqui"></option>
+                <option value="Marsilac"></option>
+                <option value="Moema"></option>
+                <option value="Mooca"></option>
+                <option value="Morumbi"></option>
+                <option value="Parelheiros"></option>
+                <option value="Pari"></option>
+                <option value="Parque do Carmo"></option>
+                <option value="Pedreira"></option>
+                <option value="Penha"></option>
+                <option value="Perdizes"></option>
+                <option value="Perus"></option>
+                <option value="Pinheiros"></option>
+                <option value="Pirituba"></option>
+                <option value="Ponte Rasa"></option>
+                <option value="Raposo Tavares"></option>
+                <option value="República"></option>
+                <option value="Rio Pequeno"></option>
+                <option value="Sacomã"></option>
+                <option value="Santa Cecília"></option>
+                <option value="Santana"></option>
+                <option value="Santo Amaro"></option>
+                <option value="São Domingos"></option>
+                <option value="São Lucas"></option>
+                <option value="São Mateus"></option>
+                <option value="São Miguel"></option>
+                <option value="São Rafael"></option>
+                <option value="Sapopemba"></option>
+                <option value="Saúde"></option>
+                <option value="Sé"></option>
+                <option value="Socorro"></option>
+                <option value="Tatuapé"></option>
+                <option value="Tremembé"></option>
+                <option value="Tucuruvi"></option>
+                <option value="Vila Andrade"></option>
+                <option value="Vila Curuçá"></option>
+                <option value="Vila Formosa"></option>
+                <option value="Vila Guilherme"></option>
+                <option value="Vila Jacuí"></option>
+                <option value="Vila Leopoldina"></option>
+                <option value="Vila Maria"></option>
+                <option value="Vila Mariana"></option>
+                <option value="Vila Matilde"></option>
+                <option value="Vila Medeiros"></option>
+                <option value="Vila Prudente"></option>
+                <option value="Vila Sônia"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <p id="aviso-vazio" class="lista-vazia" hidden>
+            Nenhum aviso encontrado para essa busca. Tente outro bairro ou
+            outro tipo de aviso.
+          </p>
+
+          <div id="lista-avisos" class="cards-grid">
+            <article class="card aviso" data-tipo="agua" data-bairro="Vila Mariana">
+              <span class="aviso-tag">Falta de água</span>
+              <h3>Abastecimento interrompido</h3>
+              <p>
+                Manutenção na rede deixa o bairro sem água durante o dia.
+              </p>
+              <p class="aviso-info">Bairro: Vila Mariana · Fonte: Sabesp</p>
+            </article>
+
+            <article class="card aviso" data-tipo="chuva" data-bairro="Santana">
+              <span class="aviso-tag">Chuva forte</span>
+              <h3>Alerta de chuva intensa</h3>
+              <p>
+                Previsão de pancadas fortes à tarde, com possibilidade de rajadas
+                de vento.
+              </p>
+              <p class="aviso-info">Bairro: Santana · Fonte: INMET</p>
+            </article>
+
+            <article
+              class="card aviso"
+              data-tipo="enchente"
+              data-bairro="Itaquera"
+            >
+              <span class="aviso-tag">Risco de enchente</span>
+              <h3>Atenção a pontos de alagamento</h3>
+              <p>
+                Nível de córregos em elevação. Evite áreas de baixada em caso de
+                chuva.
+              </p>
+              <p class="aviso-info">Bairro: Itaquera · Fonte: SAISP</p>
+            </article>
+
+            <article
+              class="card aviso"
+              data-tipo="interdicao"
+              data-bairro="Mooca"
+            >
+              <span class="aviso-tag">Interdição de via</span>
+              <h3>Via parcialmente interditada</h3>
+              <p>
+                Obra de manutenção interdita uma faixa. Procure rotas
+                alternativas.
+              </p>
+              <p class="aviso-info">Bairro: Mooca · Fonte: Órgão municipal</p>
+            </article>
+
+            <article class="card aviso" data-tipo="chuva" data-bairro="Pinheiros">
+              <span class="aviso-tag">Chuva forte</span>
+              <h3>Alerta de tempestade</h3>
+              <p>
+                Probabilidade de chuva forte com descargas elétricas no fim do
+                dia.
+              </p>
+              <p class="aviso-info">Bairro: Pinheiros · Fonte: Defesa Civil</p>
+            </article>
+
+            <article class="card aviso" data-tipo="agua" data-bairro="Itaquera">
+              <span class="aviso-tag">Falta de água</span>
+              <h3>Pressão baixa na rede</h3>
+              <p>
+                Moradores podem notar redução na pressão da água em alguns
+                horários.
+              </p>
+              <p class="aviso-info">Bairro: Itaquera · Fonte: Sabesp</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chamada para ação -->
+      <section class="cta-final">
+        <div class="container">
+          <h2>Viu um problema que não está aqui?</h2>
+          <p>Registre uma ocorrência e ajude a manter o bairro informado.</p>
+          <a href="ocorrencias.html" class="btn">Registrar Ocorrência</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-info">
+          <p>&copy; 2026 BairroTech - Global Solution FIAP.</p>
+          <p>Tecnologia com o cidadão no centro da inovação.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/avisos.js"></script>
+  </body>
+</html>
