@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ocorrências | BairroTech</title>
+    <meta
+      name="description"
+      content="Registre problemas urbanos do seu bairro, receba um protocolo e acompanhe o andamento das ocorrências. Projeto CitizenTech - Global Solution FIAP."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <a href="index.html" class="logo">
+          <img
+            src="assets/images/logo_BairroTech_vs.png"
+            alt="Logo do BairroTech"
+            width="40"
+          />
+          <span>BairroTech</span>
+        </a>
+
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="ocorrencias.html" class="ativo">Ocorrências</a></li>
+            <li><a href="avisos.html">Avisos</a></li>
+            <li><a href="faq.html">Dúvidas</a></li>
+            <li><a href="integrantes.html">Integrantes</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão do Menu Mobile (Hambúrguer) -->
+        <button class="menu-btn" id="btn-mobile" aria-label="Abrir Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Intro -->
+      <section class="hero sobre-hero">
+        <div class="container hero-content">
+          <h1>Ocorrências do bairro</h1>
+          <p>
+            Registre um problema urbano, receba um protocolo e acompanhe o
+            andamento das ocorrências da sua região.
+          </p>
+        </div>
+      </section>
+
+      <!-- Formulário de registro -->
+      <section class="sobre-secao">
+        <div class="container">
+          <h2>Registrar ocorrência</h2>
+          <p>Os campos marcados com * são obrigatórios.</p>
+
+          <form id="form-ocorrencia" class="formulario" novalidate>
+            <div class="campo">
+              <label for="categoria">Categoria *</label>
+              <select id="categoria" name="categoria" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="buraco">Buraco na rua</option>
+                <option value="lixo">Acúmulo de lixo</option>
+                <option value="bueiro">Bueiro entupido</option>
+                <option value="poste">Poste apagado</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="mensagem-erro" id="erro-categoria"></span>
+            </div>
+
+            <div class="campo">
+              <label for="bairro">Bairro *</label>
+              <input
+                type="text"
+                id="bairro"
+                name="bairro"
+                placeholder="Ex.: Vila Mariana"
+                required
+              />
+              <span class="mensagem-erro" id="erro-bairro"></span>
+            </div>
+
+            <div class="campo">
+              <label for="endereco">Endereço ou ponto de referência *</label>
+              <input
+                type="text"
+                id="endereco"
+                name="endereco"
+                placeholder="Ex.: Rua das Flores, em frente ao nº 120"
+                required
+              />
+              <span class="mensagem-erro" id="erro-endereco"></span>
+            </div>
+
+            <div class="campo">
+              <label for="risco">Nível de risco *</label>
+              <select id="risco" name="risco" required>
+                <option value="">Selecione o nível de risco</option>
+                <option value="baixo">Baixo</option>
+                <option value="medio">Médio</option>
+                <option value="alto">Alto</option>
+              </select>
+              <span class="mensagem-erro" id="erro-risco"></span>
+            </div>
+
+            <div class="campo">
+              <label for="descricao">Descrição *</label>
+              <textarea
+                id="descricao"
+                name="descricao"
+                rows="4"
+                placeholder="Descreva o problema com o máximo de detalhes"
+                required
+              ></textarea>
+              <span class="mensagem-erro" id="erro-descricao"></span>
+            </div>
+
+            <div class="campo">
+              <label for="foto">Fotografia (opcional)</label>
+              <input type="file" id="foto" name="foto" accept="image/*" />
+            </div>
+
+            <button type="submit" class="btn">Registrar ocorrência</button>
+          </form>
+
+          <!-- Mensagem de sucesso com o protocolo -->
+          <div
+            id="mensagem-sucesso"
+            class="mensagem-sucesso"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </div>
+      </section>
+
+      <!-- Lista de ocorrências -->
+      <section class="sobre-secao sobre-secao-alt">
+        <div class="container">
+          <h2>Ocorrências registradas</h2>
+
+          <div class="filtros">
+            <label for="filtro-categoria">Filtrar por categoria</label>
+            <select id="filtro-categoria">
+              <option value="todas">Todas</option>
+              <option value="buraco">Buraco na rua</option>
+              <option value="lixo">Acúmulo de lixo</option>
+              <option value="bueiro">Bueiro entupido</option>
+              <option value="poste">Poste apagado</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <p id="lista-vazia" class="lista-vazia">
+            Nenhuma ocorrência registrada ainda.
+          </p>
+
+          <!-- Cada item é criado pelo JS -->
+          <ul id="lista-ocorrencias" class="lista-ocorrencias"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-info">
+          <p>&copy; 2026 BairroTech - Global Solution FIAP.</p>
+          <p>Tecnologia com o cidadão no centro da inovação.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/ocorrencias.js"></script>
+  </body>
+</html>
