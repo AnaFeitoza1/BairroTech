@@ -73,3 +73,430 @@
     border-top: 1px solid var(--borda-padrao);
     font-size: 0.82rem;
 }
+
+/* ==========================================================
+   COMPONENTES REUTILIZÁVEIS
+   Botões, cards, formulários, acordeão, lista de ocorrências
+   e filtros. Usa as variáveis do style.css (:root).
+   Colar DEPOIS da parte da página de avisos.
+   ========================================================== */
+
+/* ---------- BOTÕES ---------- */
+/* .btn = botão principal (verde). .btn-secundario = só contorno. */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--verde-destaque);
+    border-radius: 8px;
+    background-color: var(--verde-destaque);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transicao);
+}
+
+.btn:hover {
+    background-color: var(--verde-hover);
+    border-color: var(--verde-hover);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--verde-destaque);
+    outline-offset: 3px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--verde-destaque);
+}
+
+.btn-secundario:hover {
+    background-color: rgba(16, 185, 129, 0.15);
+    border-color: var(--verde-destaque);
+}
+
+/* Botões lado a lado (hero da home) */
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ---------- CARDS ---------- */
+
+.card {
+    padding: 1.5rem;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 12px;
+    transition: var(--transicao);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--verde-destaque);
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--texto-principal);
+}
+
+/* Ícone redondo no topo do card (home) */
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.card-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* Grade que organiza os cards (celular = 1 coluna) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+/* ---------- FORMULÁRIO (com estados de erro e sucesso) ---------- */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 640px;
+    margin-top: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.campo label,
+.filtros label {
+    color: var(--texto-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--fundo-header);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 8px;
+    color: var(--texto-principal);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transicao);
+}
+
+.campo textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: var(--texto-secundario);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--verde-destaque);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+/* ERRO: o JS coloca a classe .campo-erro no .campo
+   e escreve o texto dentro do <span class="mensagem-erro"> */
+.campo-erro input,
+.campo-erro select,
+.campo-erro textarea {
+    border-color: #EF4444;
+}
+
+.campo-erro input:focus,
+.campo-erro select:focus,
+.campo-erro textarea:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.mensagem-erro {
+    min-height: 1.2em;
+    color: #EF4444;
+    font-size: 0.85rem;
+}
+
+/* SUCESSO NO CAMPO: o JS coloca .campo-sucesso no .campo */
+.campo-sucesso input,
+.campo-sucesso select,
+.campo-sucesso textarea {
+    border-color: var(--verde-destaque);
+}
+
+/* SUCESSO GERAL (protocolo gerado). Some com o atributo hidden. */
+.mensagem-sucesso {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    background-color: rgba(16, 185, 129, 0.15);
+    border-left: 4px solid var(--verde-destaque);
+    border-radius: 8px;
+    color: var(--verde-destaque);
+    font-weight: 600;
+}
+
+.mensagem-sucesso[hidden] {
+    display: none;
+}
+
+/* ---------- ACORDEÃO (página de Dúvidas) ---------- */
+/* Funciona sem JS com:
+   <details class="acordeao-item"><summary>Pergunta</summary><p>Resposta</p></details> */
+
+.acordeao {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.acordeao-item {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.acordeao-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    color: var(--texto-principal);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.acordeao-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.acordeao-item summary::after {
+    content: "+";
+    color: var(--verde-destaque);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.acordeao-item[open] summary::after {
+    content: "−";
+}
+
+.acordeao-item summary:hover {
+    background-color: rgba(16, 185, 129, 0.08);
+}
+
+.acordeao-item summary:focus-visible {
+    outline: 2px solid var(--verde-destaque);
+    outline-offset: -2px;
+}
+
+.acordeao-item p {
+    padding: 0 1.2rem 1.2rem;
+}
+
+/* ---------- LISTA DE OCORRÊNCIAS ---------- */
+/* Cada <li class="ocorrencia" data-status="aberta|andamento|resolvida">
+   é criado pelo ocorrencias.js */
+
+.lista-ocorrencias {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    list-style: none;
+}
+
+.ocorrencia {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.2rem;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-left: 4px solid var(--verde-destaque);
+    border-radius: 12px;
+}
+
+.ocorrencia h3 {
+    font-size: 1.05rem;
+    color: var(--texto-principal);
+}
+
+.ocorrencia p {
+    font-size: 0.9rem;
+}
+
+.ocorrencia-status {
+    align-self: flex-start;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(16, 185, 129, 0.15);
+    color: var(--verde-destaque);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.ocorrencia[data-status="aberta"] {
+    border-left-color: #EF4444;
+}
+
+.ocorrencia[data-status="aberta"] .ocorrencia-status {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #EF4444;
+}
+
+.ocorrencia[data-status="andamento"] {
+    border-left-color: #F59E0B;
+}
+
+.ocorrencia[data-status="andamento"] .ocorrencia-status {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+}
+
+/* Mensagem quando não há nada para mostrar (ocorrências e avisos) */
+.lista-vazia {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1rem;
+    border: 2px dashed var(--borda-padrao);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.lista-vazia[hidden] {
+    display: none;
+}
+
+/* ---------- FILTROS ---------- */
+/* Usado em avisos.html (2 campos) e ocorrencias.html (1 select) */
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.filtros select,
+.filtros input[type="search"] {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background-color: var(--fundo-header);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 8px;
+    color: var(--texto-principal);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: var(--transicao);
+}
+
+.filtros select:focus,
+.filtros input[type="search"]:focus {
+    outline: none;
+    border-color: var(--verde-destaque);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================
+   MEDIA QUERIES (mobile primeiro)
+   Mesmos pontos do style.css: 480px e 900px.
+   Para testar: 375px (celular), 768px (tablet), 1280px (desktop)
+   ========================================================== */
+
+/* Tablet: a partir de 600px */
+@media (min-width: 600px) {
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filtros {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .filtros .campo {
+        flex: 1 1 240px;
+    }
+
+    .ocorrencia {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+/* Desktop: a partir de 901px */
+@media (min-width: 901px) {
+
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .acordeao {
+        max-width: 800px;
+    }
+}
+
+/* Celular pequeno: até 480px */
+@media (max-width: 480px) {
+
+    .card {
+        padding: 1.2rem;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .hero-botoes .btn,
+    .formulario .btn {
+        width: 100%;
+    }
+
+    .acordeao-item summary {
+        padding: 0.9rem 1rem;
+    }
+}
