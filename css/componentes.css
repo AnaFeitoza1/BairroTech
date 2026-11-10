@@ -1,0 +1,75 @@
+/* ==========================================================
+   PÁGINA DE AVISOS (avisos.html)
+   Estilos exclusivos dos cards de aviso. O visual base do card
+   (fundo, borda, padding) vem da classe .card do componentes.css.
+   ========================================================== */
+
+/* Cor de cada tipo de aviso.
+   O valor vem do atributo data-tipo do card no HTML.
+   --aviso-cor: cor forte (texto e borda)
+   --aviso-fundo: mesma cor, translúcida (fundo da etiqueta) */
+
+.aviso[data-tipo="agua"] {
+    --aviso-cor: #38BDF8;
+    --aviso-fundo: rgba(56, 189, 248, 0.15);
+}
+
+.aviso[data-tipo="chuva"] {
+    --aviso-cor: #94A3B8;
+    --aviso-fundo: rgba(148, 163, 184, 0.18);
+}
+
+.aviso[data-tipo="enchente"] {
+    --aviso-cor: #F59E0B;
+    --aviso-fundo: rgba(245, 158, 11, 0.15);
+}
+
+.aviso[data-tipo="interdicao"] {
+    --aviso-cor: #EF4444;
+    --aviso-fundo: rgba(239, 68, 68, 0.15);
+}
+
+/* Card do aviso: coluna com espaço entre os itens
+   e faixa colorida na esquerda, conforme o tipo */
+
+.aviso {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-left: 4px solid var(--aviso-cor);
+}
+
+/* Etiqueta com o tipo do aviso (ex.: "Falta de água") */
+
+.aviso-tag {
+    align-self: flex-start;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--aviso-fundo);
+    color: var(--aviso-cor);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* Título do aviso */
+
+.aviso h3 {
+    font-size: 1.1rem;
+    color: var(--texto-principal);
+}
+
+/* Texto do aviso (sem a margem extra que .sobre-secao p coloca) */
+
+.aviso p {
+    margin-bottom: 0;
+}
+
+/* Linha final com bairro e fonte (ex.: "Bairro: Mooca · Fonte: Sabesp").
+   margin-top: auto empurra a linha para o fim do card */
+   
+.aviso-info {
+    margin-top: auto;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--borda-padrao);
+    font-size: 0.82rem;
+}
