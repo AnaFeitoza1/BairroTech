@@ -48,3 +48,73 @@ function gerarProtocolo(lista) {
     const numero = String(lista.length + 1).padStart(4, "0");
     return `AB-${ano}-${numero}`;
 }
+
+// ---------- Armazenamento (localStorage) ----------
+const CHAVE_STORAGE = "bairrotech_ocorrencias";
+
+function carregarOcorrencias() {
+    try {
+        const salvo = localStorage.getItem(CHAVE_STORAGE);
+        return salvo ? JSON.parse(salvo) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function salvarOcorrencias(lista) {
+    localStorage.setItem(CHAVE_STORAGE, JSON.stringify(lista));
+}
+
+// ---------- Lista na tela ----------
+const ORDEM_PRIORIDADE = { CRITICA: 4, ALTA: 3, MEDIA: 2, BAIXA: 1 };
+
+function nomeDaCategoria(id) {
+  const categoria = CATEGORIAS.find(c => c.id === id);
+  return categoria ? categoria.nome : "Outro";
+}
+
+function criarItem(ocorrencia) {
+  const prioridade = classificarPrioridade(ocorrencia);
+
+  const item = document.createElement("li");
+  item.className = "item-ocorrencia";
+  item.classList.add(`prioridade-${prioridade.toLowerCase()}`);
+
+  const titulo = document.createElement("strong");
+  titulo.textContent = `${ocorrencia.protocolo} - ${nomeDaCategoria(ocorrencia.categoriaId)}`;
+
+  const detalhes = document.createElement("p");
+  detalhes.textContent = `${ocorrencia.endereco} | Status: ${ocorrencia.status} | ` +
+    `Prioridade: ${prioridade} | Relatos: ${ocorrencia.relatos}`;
+
+  const descricao = document.createElement("p");
+  descricao.textContent = ocorrencia.descricao;
+
+  item.append(titulo, detalhes, descricao);
+  return item;
+}
+
+function renderizarLista() {
+    const lista = document.getElementById("lista-ocorrencias");
+    const aviso = document.getElementById("lista-vazia");
+    const filtro = document.getElementById("filtro-categoria");
+    if (!lista || !aviso || !filtro) return; // outras páginas não têm a lista
+
+    let ocorrencias = carregarOcorrencias();
+    if (filtro.value !== "todas") {
+        ocorrencias = ocorrencias.filter(o => o.categoriaId === filtro.value);
+    }
+
+    ocorrencias.sort((a, b) =>
+        ORDEM_PRIORIDADE[classificarPrioridade(b)] - ORDEM_PRIORIDADE[classificarPrioridade(a)]
+    );
+
+    lista.replaceChildren(...ocorrencias.map(criarItem));
+    aviso.hidden = ocorrencias.length > 0;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarLista();
+    const filtro = document.getElementById("filtro-categoria");
+    if (filtro) filtro.addEventListener("change", renderizarLista);
+});
