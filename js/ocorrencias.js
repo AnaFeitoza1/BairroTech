@@ -118,3 +118,123 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtro = document.getElementById("filtro-categoria");
     if (filtro) filtro.addEventListener("change", renderizarLista);
 });
+
+// ---------- Formulário de registro ----------
+const CAMPOS_OBRIGATORIOS = [
+    { id: "categoria", mensagem: "Selecione uma categoria" },
+    { id: "bairro", mensagem: "Informe o bairro" },
+    { id: "endereco", mensagem: "Informe o endereço ou ponto de referência" },
+    { id: "descricao", mensagem: "Descreva o problema" }
+];
+
+function mostrarErro(id, mensagem) {
+    const campo = document.getElementById(id);
+    const erro = document.getElementById(`${id}-erro`);
+    if (campo) {
+        campo.classList.add("campo-invalido");
+        campo.setAttribute("aria-invalid", "true");
+    }
+    if (erro) erro.textContent = mensagem;
+}
+
+function limparErros(id) {
+    const campo = document.getElementById(id);
+    const erro = document.getElementById(`erro-${id}`);
+    if (campo) {
+        campo.classList.remove("campo-invalido");
+        campo.removeAttribute("aria-invalid");
+    }
+    if (erro) erro.textContent = "";
+}
+
+function validarFormulario() {
+    let valido = true;
+
+    CAMPOS_OBRIGATORIOS.forEach(({ id, mensagem }) => {
+        const campo = document.getElementById(id);
+        if (campo.value.trim() === "") {
+            mostrarErro(id, mensagem);
+            valido = false;
+        } else {
+            limparErros(id);
+        }
+    });
+
+    const descricao = document.getElementById("descricao").value.trim();
+    if (descricao !== "" && descricao.length < 10) {
+        mostrarErro("descricao", "A descrição deve ter pelo menos 10 caracteres");
+        valido = false;
+    }
+
+    return valido;
+}
+
+function mostrarSucesso(protocolo) {
+    let aviso = document.getElementById("mensagem-sucesso");
+    if (!aviso) {
+        aviso = document.createElement("p");
+        aviso.id = "mensagem-sucesso";
+        aviso.className = "mensagem-sucesso";
+        aviso.setAttribute("role", "status");
+        document.getElementById("form-ocorrencia").after(aviso);
+    }
+    aviso.textContent = `Ocorrência registrada com sucesso! Protocolo: ${protocolo}`;
+}
+
+function mesmoBairro(a, b) {
+    return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+// Relatos semelhantes = mesma categoria e bairo, não resolvidos
+function registrarOcorrencia(dados) {
+    const lista = carregarOcorrencias();
+    let semelhantes = 0;
+
+    lista.forEach(o => {
+        if (o.categoriaId === dados.categoriaId
+                && mesmoBairro(o.bairro, dados.bairro)
+                && o.status !== "RESOLVIDA") {
+            o.relatos += 1;
+            semelhantes += 1;
+    }
+});
+
+const nova = {
+    protocolo: gerarProtocolo(lista),
+    categoriaId: dados.categoriaId,
+    bairro: dados.bairro,
+    endereco: dados.endereco,
+    descricao: dados.descricao,
+    status: "ABERTA",
+    relatos: semelhantes,
+    dataRegistro: dataHoje()
+};
+
+lista.push(nova);
+salvarOcorrencias(lista);
+return nova;
+}
+
+function tratarEnvio(evento) {
+    evento.preventDefault();
+    if (!validarFormulario()) return;
+
+    const nova = registrarOcorrencia({
+        categoriaId: document.getElementById("categoria").value,
+        bairro: document.getElementById("bairro").value.trim(),
+        endereco: document.getElementById("endereco").value.trim(),
+        descricao: document.getElementById("descricao").value.trim()
+    });
+
+    evento.target.reset();
+    renderizarLista();
+    mostrarSucesso(nova.protocolo);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const formulario = document.getElementById("form-ocorrencia");
+    if (!formulario) return;
+
+    formulario.addEventListener("submit", tratarEnvio);
+    formulario.addEventListener("input", (evento) => limparErros(evento.target.id));
+});

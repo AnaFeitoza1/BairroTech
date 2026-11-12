@@ -305,3 +305,18 @@ button {
         font-size: 0.78rem;
     }
 }
+/* MENSAGEM ERRO */
+.campo-invalido {
+    border: 2px solid #ff6b6b;
+}
+
+.mensagem-erro {
+    color: #ff8a8a;
+    font-size: 0.9rem;
+}
+
+.mensagem-sucesso {
+    color: #7ee2a8;
+    font-weight: 600;
+    margin-top: 1rem;
+}
