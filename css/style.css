@@ -325,3 +325,12 @@ button {
     padding: 0.4rem 0.9rem;
     font-size: 0.9rem;
 }
+.aviso[hidden],
+.lista-vazia[hidden] {
+    display: none;
+}
+
+.contador-avisos {
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
