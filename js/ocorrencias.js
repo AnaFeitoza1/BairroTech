@@ -85,12 +85,18 @@ function criarItem(ocorrencia) {
 
   const detalhes = document.createElement("p");
   detalhes.textContent = `${ocorrencia.endereco} | Status: ${ocorrencia.status} | ` +
-    `Prioridade: ${prioridade} | Relatos: ${ocorrencia.relatos}`;
+    `Prioridade: ${prioridade} (${calcularPontos(ocorrencia)} pts) | Relatos: ${ocorrencia.relatos}`;
 
   const descricao = document.createElement("p");
   descricao.textContent = ocorrencia.descricao;
 
-  item.append(titulo, detalhes, descricao);
+  const botaoApoiar = document.createElement("button");
+  botaoApoiar.type = "button";
+  botaoApoiar.className = "btn btn-apoiar";
+  botaoApoiar.dataset.protocolo = ocorrencia.protocolo;
+  botaoApoiar.textContent = "Apoiar (+1 relato)";
+
+  item.append(titulo, detalhes, descricao, botaoApoiar);
   return item;
 }
 
@@ -241,5 +247,34 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("DOMContentLoaded", iniciarFormulario);
   } else {
     iniciarFormulario();
+  }
+})();
+(function () {
+  // ---------- Apoiar ocorrência ----------
+  function apoiarOcorrencia(protocolo) {
+    const lista = carregarOcorrencias();
+    const ocorrencia = lista.find(o => o.protocolo === protocolo);
+    if (!ocorrencia) return;
+
+    ocorrencia.relatos += 1;
+    salvarOcorrencias(lista);
+    renderizarLista();
+  }
+
+  function iniciarApoio() {
+    const lista = document.getElementById("lista-ocorrencias");
+    if (!lista) return;
+
+    // Um único listener cuida de todos os botões, inclusive os criados depois
+    lista.addEventListener("click", evento => {
+      const botao = evento.target.closest("button[data-protocolo]");
+      if (botao) apoiarOcorrencia(botao.dataset.protocolo);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarApoio);
+  } else {
+    iniciarApoio();
   }
 })();

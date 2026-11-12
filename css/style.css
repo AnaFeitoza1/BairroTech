@@ -320,3 +320,8 @@ button {
     font-weight: 600;
     margin-top: 1rem;
 }
+.btn-apoiar {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+}
