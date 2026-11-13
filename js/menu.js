@@ -10,18 +10,18 @@
     botao.setAttribute("aria-expanded", "false");
 
     function estaAberto() {
-      return menu.classList.contains("menu-aberto");
+      return menu.classList.contains("aberto");
     }
 
     function abrir() {
-      menu.classList.add("menu-aberto");
+      menu.classList.add("aberto");
       botao.classList.add("aberto");
       botao.setAttribute("aria-expanded", "true");
       botao.setAttribute("aria-label", "Fechar menu");
     }
 
     function fechar() {
-      menu.classList.remove("menu-aberto");
+      menu.classList.remove("aberto");
       botao.classList.remove("aberto");
       botao.setAttribute("aria-expanded", "false");
       botao.setAttribute("aria-label", "Abrir menu");

@@ -306,10 +306,6 @@ button {
     }
 }
 /* MENSAGEM ERRO */
-.campo-invalido {
-    border: 2px solid #ff6b6b;
-}
-
 .mensagem-erro {
     color: #ff8a8a;
     font-size: 0.9rem;
@@ -395,7 +391,7 @@ button {
         padding: 0.5rem 0 1rem;
     }
 
-    .menu.menu-aberto {
+    .menu.aberto {
         display: flex;
     }
 

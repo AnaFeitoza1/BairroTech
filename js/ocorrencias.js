@@ -28,7 +28,8 @@ function diasEmAberto(ocorrencia) {
 // pontos = risco*3 + relatos (máx 5) + dias/2 (máx 5)
 function calcularPontos(ocorrencia) {
     const categoria = CATEGORIAS.find(c => c.id === ocorrencia.categoriaId);
-    const pontosRisco = categoria.risco * 3;
+    const risco = categoria ? categoria.risco : 1; // desconhecida conta como "Outro"
+    const pontosRisco = risco * 3;
     const pontosRelatos = Math.min(ocorrencia.relatos, 5);
     const pontosTempo = Math.min(Math.floor(diasEmAberto(ocorrencia) / 2), 5);
     return pontosRisco + pontosRelatos + pontosTempo;
@@ -73,19 +74,34 @@ function nomeDaCategoria(id) {
   return categoria ? categoria.nome : "Outro";
 }
 
+const MAPA_STATUS = {
+  ABERTA: "aberta",
+  EM_ANALISE: "andamento",
+  EM_ANDAMENTO: "andamento",
+  RESOLVIDA: "resolvida"
+};
+
 function criarItem(ocorrencia) {
   const prioridade = classificarPrioridade(ocorrencia);
 
   const item = document.createElement("li");
-  item.className = "item-ocorrencia";
-  item.classList.add(`prioridade-${prioridade.toLowerCase()}`);
+  item.className = "ocorrencia";
+  item.dataset.status = MAPA_STATUS[ocorrencia.status] || "aberta";
+  item.dataset.prioridade = prioridade.toLowerCase();
 
   const titulo = document.createElement("strong");
   titulo.textContent = `${ocorrencia.protocolo} - ${nomeDaCategoria(ocorrencia.categoriaId)}`;
 
+  const status = document.createElement("span");
+  status.className = "ocorrencia-status";
+  status.textContent = `Status: ${ocorrencia.status}`;
+
+  const tagPrioridade = document.createElement("span");
+  tagPrioridade.className = "ocorrencia-prioridade";
+  tagPrioridade.textContent = `Prioridade: ${prioridade} (${calcularPontos(ocorrencia)} pts)`;
+
   const detalhes = document.createElement("p");
-  detalhes.textContent = `${ocorrencia.endereco} | Status: ${ocorrencia.status} | ` +
-    `Prioridade: ${prioridade} (${calcularPontos(ocorrencia)} pts) | Relatos: ${ocorrencia.relatos}`;
+  detalhes.textContent = `${ocorrencia.endereco} | Bairro: ${ocorrencia.bairro} | Relatos: ${ocorrencia.relatos}`;
 
   const descricao = document.createElement("p");
   descricao.textContent = ocorrencia.descricao;
@@ -95,8 +111,9 @@ function criarItem(ocorrencia) {
   botaoApoiar.className = "btn btn-apoiar";
   botaoApoiar.dataset.protocolo = ocorrencia.protocolo;
   botaoApoiar.textContent = "Apoiar (+1 relato)";
+    if (ocorrencia.status === "RESOLVIDA") botaoApoiar.disabled = true;
 
-  item.append(titulo, detalhes, descricao, botaoApoiar);
+  item.append(titulo, status, tagPrioridade, detalhes, descricao, botaoApoiar);
   return item;
 }
 
@@ -111,9 +128,9 @@ function renderizarLista() {
         ocorrencias = ocorrencias.filter(o => o.categoriaId === filtro.value);
     }
 
-    ocorrencias.sort((a, b) =>
-        ORDEM_PRIORIDADE[classificarPrioridade(b)] - ORDEM_PRIORIDADE[classificarPrioridade(a)]
-    );
+ocorrencias.sort((a, b) =>
+    calcularPontos(b) - calcularPontos(a)
+);
 
     lista.replaceChildren(...ocorrencias.map(criarItem));
     aviso.hidden = ocorrencias.length > 0;
@@ -134,21 +151,40 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "descricao", mensagem: "Descreva o problema." }
   ];
 
-  function mostrarErro(id, mensagem) {
+   function mostrarErro(id, mensagem) {
     const campo = document.getElementById(id);
     const erro = document.getElementById(`erro-${id}`);
     if (campo) {
-      campo.classList.add("campo-invalido");
+      const pai = campo.closest(".campo");
+      if (pai) {
+        pai.classList.remove("campo-sucesso");
+        pai.classList.add("campo-erro");
+      }
       campo.setAttribute("aria-invalid", "true");
     }
     if (erro) erro.textContent = mensagem;
+  }
+
+  function marcarSucesso(id) {
+    const campo = document.getElementById(id);
+    const erro = document.getElementById(`erro-${id}`);
+    if (campo) {
+      const pai = campo.closest(".campo");
+      if (pai) {
+        pai.classList.remove("campo-erro");
+        pai.classList.add("campo-sucesso");
+      }
+      campo.removeAttribute("aria-invalid");
+    }
+    if (erro) erro.textContent = "";
   }
 
   function limparErro(id) {
     const campo = document.getElementById(id);
     const erro = document.getElementById(`erro-${id}`);
     if (campo) {
-      campo.classList.remove("campo-invalido");
+      const pai = campo.closest(".campo");
+      if (pai) pai.classList.remove("campo-erro", "campo-sucesso");
       campo.removeAttribute("aria-invalid");
     }
     if (erro) erro.textContent = "";
@@ -163,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarErro(id, mensagem);
         valido = false;
       } else {
-        limparErro(id);
+        marcarSucesso(id);
       }
     });
 
@@ -230,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     evento.target.reset();
+    CAMPOS_OBRIGATORIOS.forEach(({ id }) => limparErro(id));
     mostrarSucesso(nova.protocolo);
     renderizarLista();
   }
@@ -240,7 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     formulario.addEventListener("submit", tratarEnvio);
     formulario.addEventListener("input", evento => limparErro(evento.target.id));
-    console.log("formulario ligado");
   }
 
   if (document.readyState === "loading") {
