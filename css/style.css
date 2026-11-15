@@ -400,3 +400,181 @@ button {
         padding: 0.9rem 0.5rem;
     }
 }
+
+/* ==========================================
+   ESTILIZAÇÃO DAS SEÇÕES DAS PÁGINAS
+   ========================================== */
+
+/* ATRIBUTO HIDDEN
+   Garante que elementos com hidden fiquem escondidos,
+   mesmo que outra classe defina display. */
+[hidden] {
+    display: none !important;
+}
+
+/* SEÇÃO HERO (index e introdução das páginas internas) */
+.hero {
+    padding: 5rem 0;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.18), transparent 60%),
+        var(--fundo-principal);
+}
+
+.hero-content {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-botoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* VARIAÇÃO DO HERO NAS PÁGINAS INTERNAS */
+.sobre-hero {
+    padding: 3.5rem 0;
+}
+
+.sobre-hero p {
+    margin-bottom: 0;
+}
+
+/* SEÇÕES DE CONTEÚDO (PÁGINAS INTERNAS) */
+.sobre-secao {
+    padding: 3.5rem 0;
+}
+
+.sobre-secao-alt {
+    background-color: var(--fundo-header);
+    border-top: 1px solid var(--borda-padrao);
+    border-bottom: 1px solid var(--borda-padrao);
+}
+
+.sobre-secao h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin-bottom: 1rem;
+}
+
+.sobre-secao p {
+    max-width: 75ch;
+    margin-bottom: 1rem;
+}
+
+/* SEÇÃO COMO FUNCIONA (INDEX) */
+.como-funciona {
+    padding: 4rem 0;
+}
+
+.como-funciona h2 {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 2.5rem;
+}
+
+/* GRADE DE CARDS */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.como-funciona .cards-grid {
+    margin-bottom: 0;
+}
+
+/* ÍCONE DOS CARDS */
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.card-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* CHAMADA FINAL PARA AÇÃO */
+.cta-final {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--fundo-header);
+    border-top: 1px solid var(--borda-padrao);
+}
+
+.cta-final h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.8rem;
+}
+
+.cta-final p {
+    max-width: 60ch;
+    margin: 0 auto 1.8rem;
+}
+
+/* RESPONSIVIDADE - TABLET E CELULAR */
+@media (max-width: 900px) {
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .como-funciona,
+    .cta-final {
+        padding: 3rem 0;
+    }
+}
+
+/* RESPONSIVIDADE - CELULARES */
+@media (max-width: 480px) {
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .sobre-hero {
+        padding: 2.5rem 0;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .hero-botoes .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sobre-secao {
+        padding: 2.5rem 0;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
