@@ -50,17 +50,88 @@
       </div>
     </header>
 
-    <main></main>
+    <main>
+  <section class="hero sobre-hero">
+    <div class="container hero-content">
+      <h1>Dúvidas frequentes</h1>
+      <p>Entenda como registrar ocorrências, usar o protocolo e consultar os avisos do seu bairro.</p>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <div class="container footer-content">
-        <div class="footer-info">
-          <p>&copy; 2026 BairroTech - Global Solution FIAP.</p>
-          <p>Tecnologia com o cidadão no centro da inovação.</p>
+  <section class="sobre-secao">
+    <div class="container">
+      <div class="filtros">
+        <div class="campo">
+          <label for="faq-busca">Buscar uma dúvida</label>
+          <input type="search" id="faq-busca"
+                 placeholder="Ex.: protocolo, foto, enchente" autocomplete="off" />
         </div>
       </div>
-    </footer>
 
-    <script src="js/menu.js"></script>
-  </body>
-</html>
+      <div id="faq-lista" class="acordeao">
+        <details class="acordeao-item">
+          <summary>Como registro uma ocorrência?</summary>
+          <p>
+            Acesse a página Ocorrências, preencha o formulário com categoria,
+            bairro, endereço, nível de risco e descrição, e clique em
+            "Registrar ocorrência". Você também pode anexar uma fotografia.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>Quais problemas posso registrar?</summary>
+          <p>
+            Buracos na rua, acúmulo de lixo, bueiros entupidos, postes apagados
+            e outros problemas de infraestrutura do seu bairro.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>O que é o protocolo e como uso?</summary>
+          <p>
+            Cada ocorrência registrada recebe um número de protocolo, como
+            BT-2026-12345. Guarde esse número para acompanhar o andamento do
+            seu registro.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>Preciso enviar uma foto?</summary>
+          <p>
+            Não, a fotografia é opcional, mas ajuda a identificar o problema.
+            São aceitas imagens JPG, PNG ou WebP de até 5 MB.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>Como as ocorrências são priorizadas?</summary>
+          <p>
+            A prioridade considera o nível de risco informado, a quantidade de
+            relatos semelhantes e o tempo desde o primeiro registro.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>De onde vêm os avisos do bairro?</summary>
+          <p>
+            Os avisos são organizados a partir de fontes oficiais, como Sabesp,
+            INMET, SAISP, Defesa Civil e órgãos municipais, conforme a
+            disponibilidade de integração dos dados.
+          </p>
+        </details>
+
+        <details class="acordeao-item">
+          <summary>O BairroTech atende emergências?</summary>
+          <p>
+            Não. Em situações de risco imediato, ligue para a Defesa Civil
+            (199) ou para o Corpo de Bombeiros (193).
+          </p>
+        </details>
+      </div>
+
+      <p id="faq-vazio" class="lista-vazia" hidden>
+        Nenhuma dúvida encontrada para essa busca.
+      </p>
+    </div>
+  </section>
+</main>
