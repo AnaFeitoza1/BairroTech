@@ -65,7 +65,7 @@
     botao.setAttribute('aria-expanded', String(abrir));
     if (abrir) {
       if (!mensagens.children.length) {
-        adicionar('Olá! Sou o assistente do BairroTech. Posso ajudar com avisos e ocorrências.', 'bot');
+        adicionar('Olá! Sou o assistente BT do BairroTech! Posso te ajudar com avisos e ocorrências.', 'bot');
       }
       campo.focus();
     }
@@ -100,7 +100,7 @@
       const dados = await resposta.json();
       aguarde.textContent = dados.resposta || 'Não consegui entender. Pode repetir?';
     } catch (erro) {
-      aguarde.textContent = 'O assistente está indisponível no momento. Tente novamente mais tarde.';
+      aguarde.textContent = 'Desculpe! Nosso assistente está indisponível no momento. Tente novamente mais tarde. Caso queira registrar uma ocorrência, clique no botão "Registrar ocorrência" na tela inicial do site, você pode também ver os avisos do seu bairro clicando no botão "Avisos" na tela inicial!';
     } finally {
       enviar.disabled = false;
       campo.focus();
