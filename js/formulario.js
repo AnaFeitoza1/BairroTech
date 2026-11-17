@@ -3,9 +3,9 @@
 
   var TAMANHO_MAX_FOTO = 5 * 1024 * 1024; 
   var TIPOS_IMAGEM = ['image/jpeg', 'image/png', 'image/webp'];
-  if (campo.type === 'email') {
-  var arroba = valor.indexOf('@');
-  var ponto = valor.lastIndexOf('.');
+   if (campo.type === 'email') {
+    var arroba = valor.indexOf('@');
+    var ponto = valor.lastIndexOf('.');
 
   if (
     valor.indexOf(' ') !== -1 ||  
