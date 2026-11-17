@@ -305,38 +305,19 @@ button {
         font-size: 0.78rem;
     }
 }
-/* MENSAGEM ERRO */
-.mensagem-erro {
-    color: #ff8a8a;
-    font-size: 0.9rem;
-}
 
-.mensagem-sucesso {
-    color: #7ee2a8;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-.btn-apoiar {
-    margin-top: 0.5rem;
-    padding: 0.4rem 0.9rem;
-    font-size: 0.9rem;
-}
 .aviso[hidden],
 .lista-vazia[hidden] {
     display: none;
 }
 
-.contador-avisos {
-    font-size: 0.9rem;
-    margin: 1rem 0;
-}
 /* ------------------------------------------------
    ESTILIZAÇÃO DO MENU HAMBÚRGUER
    ----------------------------------------- */
 
 /* Vira um X quando aberto */
 .menu-btn.aberto span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .menu-btn.aberto span:nth-child(2) {
@@ -344,7 +325,7 @@ button {
 }
 
 .menu-btn.aberto span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================
@@ -384,10 +365,7 @@ button {
 }
 
 .hero-botoes {
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
 /* VARIAÇÃO DO HERO NAS PÁGINAS INTERNAS */
@@ -429,36 +407,6 @@ button {
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 2.5rem;
-}
-
-/* GRADE DE CARDS */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.como-funciona .cards-grid {
-    margin-bottom: 0;
-}
-
-/* ÍCONE DOS CARDS */
-.card-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 1rem;
-    border-radius: 50%;
-    background-color: rgba(16, 185, 129, 0.15);
-}
-
-.card-icon-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
 }
 
 /* CHAMADA FINAL PARA AÇÃO */

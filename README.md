@@ -118,7 +118,7 @@ Equipe BairroTech: [bairrotech@gmail.com]
 
 Foi usada a ferramenta **Claude (Anthropic)** como apoio ao desenvolvimento, para:
 
-- atuar como mentor na estrutura das páginas HTML e dos blocos de CSS, fornecendo versões iniciais do código que a equipe leu, testou e adaptou;
+- atuar como mentor na estrutura das páginas, fornecendo versões iniciais do código que a equipe leu, testou e adaptou ao decorrer do projeto;
 - revisar o código, apontando erros e melhorias (acessibilidade, organização e nomes de classes);
 - orientar o uso de Git e a organização do repositório.
 
