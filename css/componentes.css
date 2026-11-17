@@ -576,3 +576,139 @@
 .perfil-links a:hover {
     text-decoration: underline;
 }
+/* =============================
+   WEBCHAT (assistente virtual)
+   =============================*/
+
+/* Botão flutuante no canto da tela */
+.webchat-botao {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 200;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background-color: var(--verde-destaque);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition: var(--transicao);
+}
+
+.webchat-botao:hover {
+    background-color: var(--verde-hover);
+}
+
+.webchat-botao:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
+}
+
+/* Janela do chat */
+.webchat-janela {
+    position: fixed;
+    right: 1rem;
+    bottom: 4.5rem;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    width: min(360px, calc(100% - 2rem));
+    height: min(480px, calc(100% - 6rem));
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.webchat-janela[hidden] {
+    display: none;
+}
+
+/* Topo com título e botão de fechar */
+.webchat-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background-color: var(--fundo-header);
+    border-bottom: 1px solid var(--borda-padrao);
+    color: var(--texto-principal);
+}
+
+.webchat-fechar {
+    padding: 0 0.4rem;
+    border: 0;
+    background: transparent;
+    color: var(--texto-secundario);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.webchat-fechar:hover {
+    color: var(--texto-principal);
+}
+
+/* Área das mensagens (rola quando enche) */
+.webchat-mensagens {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* Balões de mensagem */
+.webchat-msg {
+    max-width: 85%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.webchat-msg-bot {
+    align-self: flex-start;
+    background-color: var(--fundo-header);
+    color: var(--texto-principal);
+}
+
+.webchat-msg-usuario {
+    align-self: flex-end;
+    background-color: var(--verde-destaque);
+    color: #FFFFFF;
+}
+
+/* Campo de digitação e botão enviar */
+.webchat-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border-top: 1px solid var(--borda-padrao);
+}
+
+.webchat-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.6rem 0.8rem;
+    background-color: var(--fundo-header);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 8px;
+    color: var(--texto-principal);
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.webchat-input:focus {
+    outline: none;
+    border-color: var(--verde-destaque);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+.webchat-enviar {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+}
