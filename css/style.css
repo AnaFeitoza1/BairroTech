@@ -330,27 +330,9 @@ button {
     font-size: 0.9rem;
     margin: 1rem 0;
 }
-/* ---------- Menu mobile (hambúrguer) ---------- */
-.menu-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-.menu-btn span {
-    display: block;
-    height: 3px;
-    background: #ffffff;
-    border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s;
-}
+/* ------------------------------------------------
+   ESTILIZAÇÃO DO MENU HAMBÚRGUER
+   ----------------------------------------- */
 
 /* Vira um X quando aberto */
 .menu-btn.aberto span:nth-child(1) {
@@ -363,42 +345,6 @@ button {
 
 .menu-btn.aberto span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
-}
-
-@media (max-width: 768px) {
-    .header-content {
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        order: 1;
-    }
-
-    .menu-btn {
-        display: flex;
-        order: 2;
-    }
-
-    .header nav {
-        order: 3;
-        width: 100%;
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        padding: 0.5rem 0 1rem;
-    }
-
-    .menu.aberto {
-        display: flex;
-    }
-
-    .menu li a {
-        display: block;
-        padding: 0.9rem 0.5rem;
-    }
 }
 
 /* ==========================================
