@@ -3,19 +3,16 @@
 
   var TAMANHO_MAX_FOTO = 5 * 1024 * 1024; 
   var TIPOS_IMAGEM = ['image/jpeg', 'image/png', 'image/webp'];
-   if (campo.type === 'email') {
-    var arroba = valor.indexOf('@');
-    var ponto = valor.lastIndexOf('.');
-
-  if (
-    valor.indexOf(' ') !== -1 ||  
-    arroba < 1 ||                  
-    ponto < arroba + 2 ||          
-    ponto === valor.length - 1     
-  ) {
-    return 'Digite um e-mail válido, como nome@exemplo.com.';
-  }
+  function emailValido(valor) {
+  var arroba = valor.indexOf('@');
+  var ponto = valor.lastIndexOf('.');
+  return valor.indexOf(' ') === -1 &&
+         arroba >= 1 &&
+         arroba === valor.lastIndexOf('@') &&
+         ponto >= arroba + 2 &&
+         ponto < valor.length - 1;
 }
+
 
   function iniciar(form) {
     var botao = form.querySelector('[type="submit"]');
@@ -78,7 +75,7 @@
 
       if (!valor) return ''; 
 
-      if (campo.type === 'email' && !PADRAO_EMAIL.test(valor)) {
+      if (campo.type === 'email' && !emailValido(valor)) {
         return 'Digite um e-mail válido, como nome@exemplo.com.';
       }
 
@@ -223,4 +220,4 @@
     atualizarBotao(); 
   }
   document.querySelectorAll('form.formulario').forEach(iniciar);
-})();
+}());

@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!aviso) return;
 
     aviso.textContent = `Ocorrência registrada! Seu protocolo é ${protocolo}.`;
+    aviso.hidden = false;
     aviso.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
