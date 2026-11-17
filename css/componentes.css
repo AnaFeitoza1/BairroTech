@@ -32,7 +32,7 @@
 /* Card do aviso: coluna com espaço entre os itens
    e faixa colorida na esquerda, conforme o tipo */
 
-.aviso {
+.card.aviso {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -122,6 +122,15 @@
 .btn-secundario:hover {
     background-color: rgba(16, 185, 129, 0.15);
     border-color: var(--verde-destaque);
+}
+.btn-apoiar {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+}
+.contador-avisos {
+    font-size: 0.9rem;
+    margin: 1rem 0;
 }
 
 /* Botões lado a lado (hero da home) */
@@ -330,6 +339,7 @@
 
 .acordeao-item p {
     padding: 0 1.2rem 1.2rem;
+    margin-bottom: 0;
 }
 
 /* ---------- LISTA DE OCORRÊNCIAS ---------- */
@@ -410,6 +420,10 @@
 .ocorrencia[data-status="andamento"] .ocorrencia-status {
     background-color: rgba(245, 158, 11, 0.15);
     color: #F59E0B;
+}
+.ocorrencia[data-prioridade="critica"] .ocorrencia-prioridade {
+    background-color: #B91C1C;
+    color: #FFFFFF;
 }
 
 /* Mensagem quando não há nada para mostrar (ocorrências e avisos) */
