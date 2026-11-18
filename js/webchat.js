@@ -2,7 +2,6 @@
   'use strict';
 
   // Endereço do fluxo do Node-RED (nó "http in", método POST).
-  // Troque aqui se o Node-RED estiver em outro endereço.
   const URL_BOT = 'http://localhost:1880/chat';
 
   // Identifica a conversa. Fica só na memória da página.
@@ -17,7 +16,7 @@
   }
 
   // Botão flutuante
-  const botao = criar('button', 'webchat-botao', 'Assistente');
+  const botao = criar('button', 'webchat-botao', 'Assistente BT');
   botao.type = 'button';
   botao.setAttribute('aria-label', 'Abrir assistente virtual');
   botao.setAttribute('aria-expanded', 'false');

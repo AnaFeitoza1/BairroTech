@@ -584,7 +584,7 @@
 .webchat-botao {
     position: fixed;
     right: 1rem;
-    bottom: 1rem;
+    bottom: 4.5rem; /* Subiu para dar espaço ao Telegram */
     z-index: 200;
     padding: 0.8rem 1.2rem;
     border: 0;
@@ -595,7 +595,6 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: var(--transicao);
 }
-
 .webchat-botao:hover {
     background-color: var(--verde-hover);
 }
@@ -609,12 +608,12 @@
 .webchat-janela {
     position: fixed;
     right: 1rem;
-    bottom: 4.5rem;
+    bottom: 8.5rem; /* O botao do Telegram fica embaixo, o do webchat acima */
     z-index: 200;
     display: flex;
     flex-direction: column;
     width: min(360px, calc(100% - 2rem));
-    height: min(480px, calc(100% - 6rem));
+    height: min(480px, calc(100% - 9rem)); /* não estourar o topo da tela */
     background-color: var(--fundo-card);
     border: 1px solid var(--borda-padrao);
     border-radius: 12px;
@@ -711,4 +710,31 @@
 .webchat-enviar {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
+}
+/* Botão flutuante do Telegram */
+.telegram-botao {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem; /* Bem na parte inferior */
+    z-index: 200;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background-color: #0088cc;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.telegram-botao:hover {
+    background-color: #073e21;
+}
+.telegram-botao:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
 }
