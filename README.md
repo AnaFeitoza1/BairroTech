@@ -27,6 +27,8 @@ O **BairroTech** é uma plataforma web que reúne, em um só lugar:
 
 > Os avisos exibidos no site são **exemplos ilustrativos**. A integração com fontes oficiais (Sabesp, INMET, SAISP, Defesa Civil e órgãos municipais) depende da disponibilidade dos dados.
 
+O assistente virtual do site se comunica com um fluxo em **Node-RED**, que também atende o Telegram. Ele só responde quando o Node-RED está em execução. Caso contrário, o site mostra uma mensagem de indisponibilidade e atalhos para as páginas de avisos e de ocorrências.
+
 ### Objetivo
 
 Promover uma comunidade mais informada, participativa e consciente, usando a tecnologia para facilitar a comunicação de problemas urbanos e ampliar o acesso a informações oficiais. O projeto está alinhado ao **ODS 11 – Cidades e Comunidades Sustentáveis**.
@@ -83,7 +85,7 @@ BairroTech/
 O projeto é estático e não precisa de instalação. Baixe ou clone o repositório e abra o arquivo `index.html` no navegador.
 
 ```bash
-git clone [https://github.com/AnaFeitoza1/BairroTech.git]
+git clone https://github.com/AnaFeitoza1/BairroTech.git
 ```
 
 ## Imagens do projeto
@@ -108,17 +110,17 @@ git clone [https://github.com/AnaFeitoza1/BairroTech.git]
 
 ## Repositório
 
-[https://github.com/AnaFeitoza1/BairroTech]
+[https://github.com/AnaFeitoza1/BairroTech](https://github.com/AnaFeitoza1/BairroTech)
 
 ## Contato
 
-Equipe BairroTech: [bairrotech@gmail.com]
+Equipe BairroTech: bairrotech@gmail.com
 
 ## Uso de IA generativa
 
 Foi usada a ferramenta **Claude (Anthropic)** como apoio ao desenvolvimento, para:
 
-- atuar como mentor na estrutura das páginas, fornecendo versões iniciais e obrigatórias do código que a equipe leu, testou e adaptou ao decorrer do projeto;
+- atuar como mentor na estrutura das páginas, fornecendo versões iniciais do código que a equipe leu, testou e adaptou ao longo do projeto;
 - revisar o código, apontando erros e melhorias (acessibilidade, organização e nomes de classes);
 - orientar o uso de Git e a organização do repositório.
 
